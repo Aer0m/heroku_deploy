@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/bootstrap.css" rel="stylesheet" />
+    <link href="../static/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../static/styles.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Предсказать цену страховки</h1>
+    <div>
+        <form action="{{ url_for('predict_bill')}}"method="POST">
+        <div class="mb-3">
+          <input type="text" name="age" class="form-control" placeholder="Возраст" required="required">
+        </div>
+        <div class="mb-3">
+          <input type="text" name="sex" class="form-control" placeholder="Пол" required="required">
+        </div>
+         <div class="mb-3">
+          <input type="text" name="bmi" class="form-control" placeholder="ИМТ" required="required">
+        </div>
+         <div class="mb-3">
+          <input type="text" name="children" class="form-control" placeholder="Количество детей" required="required">
+        </div>
+        <div class="mb-3">
+          <input type="text" name ="smoker" class="form-control" placeholder="Курильщик?" required="required">
+        </div>
+        <div class="mb-3">
+          <input type="text" name="region" class="form-control" placeholder="Регион" required="required">
+        </div>
+        <button type="submit" class="btn btn-primary">Предсказать</button>
+        </form>
+    </div>
+    {{pred}}
+</body>
+</html>
