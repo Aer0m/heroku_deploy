@@ -13,11 +13,11 @@ app = Flask(__name__, template_folder='templates')
 @app.route('/predict', methods=['POST'])
 def predict_bill():
    age = request.form.get('age')
-   sex = request.form.get('sex')
+   sex = request.form.get('sex').lower()
    bmi = request.form.get('bmi')
    children = request.form.get('children')
-   smoker = request.form.get('smoker')
-   region = request.form.get('region')
+   smoker = request.form.get('smoker').lower()
+   region = request.form.get('region').lower()
 
    if sex == "female":
       sex = 0
