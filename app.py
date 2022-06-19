@@ -19,13 +19,30 @@ def predict_bill():
    smoker = request.form.get('smoker')
    region = request.form.get('region')
 
+   if sex == "female":
+      sex = 0
+   elif sex == "male":
+      sex = 1
+   if smoker == "yes":
+      smoker = 0
+   elif smoker == "no":
+      smoker = 1
+   if region == "southwest":
+      region = 0
+   elif region == "southeast":
+      region = 1
+   elif region == "northwest":
+      region = 2
+   elif region == "northeast":
+      region = 3
+
    # Используем метод модели predict для
    # получения прогноза для неизвестных данных
    unseen = np.array([[age, sex, bmi, children, smoker, region]], dtype=float)
    # unseen = np.nan_to_num(unseen)
    result = knn.predict(unseen)
    # возвращаем результат
-   return render_template("index.html", pred='Expected Bill will be {}'.format(result))
+   return render_template("index.html", pred='Примерная сумма оплаты {}'.format(result))
 
 @app.route('/predict_api')
 def predict_bills():
